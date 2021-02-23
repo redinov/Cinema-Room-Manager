@@ -1,5 +1,6 @@
 # Cinema-Room-Manager
 *This project from Study plan (Hyperskill.org).
+
 Create cinema theatre where we can buy tickets, show the seats and see statistics.
 Menu should look like this:
 

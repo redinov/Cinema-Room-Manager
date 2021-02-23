@@ -15,3 +15,4 @@ The total income that shows how much money the theatre will get if all the ticke
 
 Program shouldn't allow to user to buy a ticket that has already been purchased and warning user when put incorrect place in theatre.
 When theatre has places more than 60 there is different price: 10$ for the front half of the rows and 8$ for the back half. In other cases the price is 10$.
+Zap!

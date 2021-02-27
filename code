@@ -5,13 +5,15 @@ public class Cinema {
 
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
+        // Создаем кинотеатр
         System.out.println("Enter the number of rows:");
         System.out.print("> ");
         final int rowsOfCinema = scanner.nextInt();
         System.out.println("Enter the number of seats in each row:");
         System.out.print("> ");
         final int seatsOfCinema = scanner.nextInt();
-        // Заполняем зал, для хранения
+        
+        // Заполняем зал, для хранения 
         System.out.println();
         String[][] array = new String[rowsOfCinema][seatsOfCinema];
         for (int i = 0; i < array.length; i++) {
@@ -19,9 +21,9 @@ public class Cinema {
                 array[i][j] = "S"; // Заполняем места S-ками
             }
         }
-        // Делаем бесконечный цикл для меню
+        
+        // Создаем меню и делаем бесконечный цикл
         boolean keepDoing = true;
-        // Меню
         while (keepDoing) {
             System.out.println("1. Show the seats");
             System.out.println("2. Buy a ticket");
@@ -85,29 +87,29 @@ public class Cinema {
         System.out.print("> ");
         int seatChoose = scanner.nextInt();
         System.out.println();
-        if (rowChoose > rowsOfCinema || seatChoose > seatsOfCinema) {
+        if (rowChoose > rowsOfCinema || seatChoose > seatsOfCinema) { // Выводим ошибку если выбор места вне зала
             System.out.println("Wrong input!");
             return buyTicket(rowsOfCinema, seatsOfCinema, array);
-        } else if (rowChoose < 0 || seatChoose < 0) {
+        } else if (rowChoose < 0 || seatChoose < 0) { // Выводим ошибку если выбором является отрицательное число
             System.out.println("Wrong input!");
             return buyTicket(rowsOfCinema, seatsOfCinema, array);
-        } else if (array[rowChoose - 1][seatChoose - 1] == "B" ) {
+        } else if (array[rowChoose - 1][seatChoose - 1] == "B" ) { // Выводим ошибку если место уже куплено
             System.out.println("That ticket has already been purchased!");
             return buyTicket(rowsOfCinema, seatsOfCinema, array);
         } else {
-            array[rowChoose - 1][seatChoose - 1] = "B";
+            array[rowChoose - 1][seatChoose - 1] = "B"; // Присваиваем месту значение "B"
             int price = 0;
             int mount = rowsOfCinema * seatsOfCinema; // Всего мест
-            if (mount > 60 && rowChoose <= rowsOfCinema / 2) {
+            if (mount > 60 && rowChoose <= rowsOfCinema / 2) { // Если мест больше 60 и первые ряды, цена - 10$
                 System.out.println("Ticket price: $10 \n");
                 price = 10;
                 return price;
-            } else if (mount > 60 && rowChoose > rowsOfCinema / 2) {
+            } else if (mount > 60 && rowChoose > rowsOfCinema / 2) { // Если мест больше 60 и задние ряды, цена - 8$
                 System.out.println("Ticket price: $8 \n");
                 price = 8;
                 return price;
             } else {
-                System.out.println("Ticket price: $10 \n");
+                System.out.println("Ticket price: $10 \n"); // Если мест меньше 60, цена всегда - 10$
                 price = 10;
                 return price;
             }
@@ -144,7 +146,7 @@ public class Cinema {
         int totalPrice = 0;
         int mount = rowsOfCinema * seatsOfCinema; // Всего мест
         if (mount > 60) {
-            for (int i = 0; i < (array.length) / 2; i++) { // ==> ВОЗМОЖНО ТУТ ОШИБКА Length <==
+            for (int i = 0; i < (array.length) / 2; i++) { //
                 for (int j = 0; j < array[i].length; j++) {
                     if (array[i][j] == "B") {
                         totalPrice = totalPrice + 10;
